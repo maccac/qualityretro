@@ -1,6 +1,5 @@
 package info.mcaroly.qualityretro;
 
-import info.mcaroly.qualityretro.model.TeamMetrics;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.ext.web.Router;
@@ -18,11 +17,9 @@ public class WebVerticle extends AbstractVerticle {
         final Router router = Router.router(vertx);
         StaticHandler staticHandler = StaticHandler.create();
         staticHandler.setDirectoryListing(true);
+        staticHandler.setIndexPage("index.html");
 
-        router.route("/static/*")
-                .handler(staticHandler);
-
-        router.get("/")
+        router.get("/metrics/team")
                 .produces("application/json")
                 .handler(ctx -> {
                     ctx.response()
@@ -31,6 +28,9 @@ public class WebVerticle extends AbstractVerticle {
                             .write(payload())
                             .end();
                 });
+
+        router.route("/*")
+                .handler(staticHandler);
 
         vertx.createHttpServer()
                 .requestHandler(router::accept)
