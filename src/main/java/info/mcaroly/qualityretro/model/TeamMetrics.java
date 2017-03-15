@@ -18,4 +18,16 @@ public class TeamMetrics {
         this.teamLogo = teamLogo;
         this.metrics = metrics;
     }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public String getTeamLogo() {
+        return teamLogo;
+    }
+
+    public List<SpotifyMetric> getMetrics() {
+        return metrics;
+    }
 }

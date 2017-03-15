@@ -1,16 +1,22 @@
 package info.mcaroly.qualityretro;
 
+import static info.mcaroly.qualityretro.utils.JsonUtil.json;
+
+import info.mcaroly.qualityretro.service.MetricsService;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.StaticHandler;
 
-/**
- * Created by mcaroly on 12/3/17.
- */
 public class WebVerticle extends AbstractVerticle {
 
     private static final int PORT = 10080;
+
+    private MetricsService metricsService;
+
+    public WebVerticle() {
+        this.metricsService = new MetricsService();
+    }
 
     @Override
     public void start(Future<Void> fut) throws Exception {
@@ -25,7 +31,7 @@ public class WebVerticle extends AbstractVerticle {
                     ctx.response()
                             .putHeader("content-type", "application/json")
                             .setChunked(true)
-                            .write(payload())
+                            .write(json(metricsService.getMetricsForTeam()))
                             .end();
                 });
 
@@ -35,9 +41,5 @@ public class WebVerticle extends AbstractVerticle {
         vertx.createHttpServer()
                 .requestHandler(router::accept)
                 .listen(PORT);
-    }
-
-    private String payload() {
-        return ""; //;
     }
 }
