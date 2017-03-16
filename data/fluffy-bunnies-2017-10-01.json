@@ -1,7 +1,7 @@
 {
   "teamId": "fluffy-bunnies",
   "teamName": "Fluffy Bunnies",
-  "teamLogo": "http://mylogo/logo.gif",
+  "teamLogo": "/images/fluffy-bunnies.png",
   "date": "2017-10-01",
   "metrics": [
     {
