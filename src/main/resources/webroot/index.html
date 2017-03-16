@@ -4,7 +4,7 @@
   ~ Lv1, 155 Clarence St, Sydney NSW 2000.
   ~ All rights reserved.
   -->
-<html xmlns="http://www.w3.org/1999/xhtml" ng-app>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="quality-retro">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,6 +18,8 @@
 
     <!-- inject:vendor:css -->
     <!-- endinject -->
+    <!-- inject:css -->
+    <!-- endinject -->
 </head>
 <body>
 <div class="jumbotron">
@@ -28,6 +30,7 @@
 </div>
 <div class="container-fluid">
     <div class="row">
+        <div ng-view></div>
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
             <div class="panel panel-info">
                 <div class="page-header">
@@ -48,12 +51,13 @@
 <!-- endinject -->
 <!-- inject:js -->
 <script src="/js/app.js"></script>
+<script src="/page/home/home-controller.js"></script>
 <!-- endinject -->
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js" type="application/javascript"></script>
 <script type="application/javascript">
     var ctx = $("#myChart");
-    var chart = new Chart(ctx,{
+    var chart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -83,7 +87,7 @@
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero:true
+                        beginAtZero: true
                     }
                 }]
             }
