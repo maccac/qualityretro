@@ -3,7 +3,13 @@
         <h3>{{vm.metric.title}}</h3>
     </div>
     <div class="panel-body" ng-if="vm.data">
-        <canvas class="chart chart-bar" chart-data="vm.data" chart-labels="vm.labels"
-                chart-colors="vm.colors" chart-options="vm.options" height="100"></canvas>
+        <div style="width:250px; float: left">
+            <canvas class="chart chart-bar" chart-data="vm.data" chart-labels="vm.labels"
+                    chart-colors="vm.colors" chart-options="vm.options"></canvas>
+        </div>
+        <div style="float: right;">
+            <image src="/images/{{vm.metric.trend}}.png" width="150px" />
+        </div>
+
     </div>
 </div>
