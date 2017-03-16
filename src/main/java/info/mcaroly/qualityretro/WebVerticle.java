@@ -3,12 +3,16 @@ package info.mcaroly.qualityretro;
 import info.mcaroly.qualityretro.handler.TeamMetricsHandler;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
+import io.vertx.core.logging.Logger;
+import io.vertx.core.logging.LoggerFactory;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.StaticHandler;
 
 public class WebVerticle extends AbstractVerticle {
 
-    private static final int PORT = 10080;
+    private static final Logger LOG = LoggerFactory.getLogger(WebVerticle.class);
+
+    public static final int DEFAULT_PORT = 10080;
 
     @Override
     public void start(Future<Void> fut) throws Exception {
@@ -33,9 +37,11 @@ public class WebVerticle extends AbstractVerticle {
         router.route("/*")
                 .handler(staticHandler);
 
+        Integer port = config().getInteger("http.port", DEFAULT_PORT);
         vertx.createHttpServer()
                 .requestHandler(router::accept)
-                .listen(PORT);
+                .listen(port);
+        LOG.info(String.format("Running on port %d", port));
     }
 
 }
