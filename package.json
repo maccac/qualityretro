@@ -1,0 +1,21 @@
+{
+  "name": "qualityretro",
+  "version": "1.0.0",
+  "description": "Retro stuff here",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.8.0",
+    "gulp": "^3.9.1",
+    "gulp-inject": "^4.2.0",
+    "gulp-main-bower-files": "^1.6.1",
+    "gulp-rename": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://greengoat@github.com/maccac/qualityretro.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/maccac/qualityretro#readme"
+}
