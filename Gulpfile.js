@@ -5,7 +5,7 @@ var gulp = require("gulp"),
 
 
 gulp.task("vendor:copy", [], function () {
-    return gulp.src(mainBowerFiles(), {read: true, "base" : "."})
+    return gulp.src(mainBowerFiles(), {read: true, "base": "."})
         .pipe(gulp.dest("src/main/resources/webroot/"));
 });
 
@@ -18,7 +18,9 @@ gulp.task("vendor:inject", ["vendor:copy"], function () {
 
 gulp.task("default", ["vendor:inject"], function () {
     return gulp.src("src/main/resources/webroot/index.html")
-        .pipe(inject(gulp.src(["!src/main/resources/webroot/bower_components/**/*.js", "src/main/resources/webroot/**/*.js"], {read: false}), {ignorePath: "/src/main/resources/webroot/"}))
+        .pipe(inject(
+            gulp.src(["!src/main/resources/webroot/bower_components/**/*.js", "src/main/resources/webroot/**/*.js"],
+                {read: false}), {ignorePath: "/src/main/resources/webroot/"}))
         .pipe(rename("index.html"))
         .pipe(gulp.dest("src/main/resources/webroot"));
 });

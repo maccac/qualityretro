@@ -1,3 +1,12 @@
+
+# Node libraries
 /node_modules
+
+# Bower libraries
 /bower_components
+
+# Gulp vendore scripts. Use the bower.json file for declaring these
 src/main/resources/webroot/bower_components
+
+# vertx temp stuff
+/.vertx

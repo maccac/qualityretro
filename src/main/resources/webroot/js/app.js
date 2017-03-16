@@ -1,4 +1,4 @@
-angular.module("quality-retro", ["ngRoute"]);
+angular.module("quality-retro", ["ngRoute", "ngResource", "chart.js"]);
 
 angular.module("quality-retro").config(function ($routeProvider) {
     $routeProvider.when("/", {
