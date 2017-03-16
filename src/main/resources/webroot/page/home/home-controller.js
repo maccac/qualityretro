@@ -2,9 +2,8 @@ angular.module("quality-retro").controller("homeCtrl", function ($scope, Metrics
     var vm = this;
     $scope.vm = vm;
 
-    MetricsService.getMetrics().$promise
+    MetricsService.getMetrics("latest").$promise
         .then(function (data) {
             vm.metrics = data;
         });
-
 });
