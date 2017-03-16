@@ -7,6 +7,7 @@ package info.mcaroly.qualityretro.model;
 
 public class SpotifyMetric {
 
+    private String metricId;
     private String title;
     private String image;
     private String type;
@@ -16,8 +17,9 @@ public class SpotifyMetric {
     private Trend trend;
 
     public SpotifyMetric(String title, String image, int redIndicators, int yellowIndicators, int greenIndicators, Trend trend) {
+        this.metricId = title.replace(" ", "-").toLowerCase();
         this.title = title;
-        this.type = "spotify";
+        this.type = "health-check";
         this.image = image;
         this.redIndicators = redIndicators;
         this.yellowIndicators = yellowIndicators;
@@ -51,5 +53,13 @@ public class SpotifyMetric {
 
     public Trend getTrend() {
         return trend;
+    }
+
+    public String getMetricId() {
+        return metricId;
+    }
+
+    public void setMetricId(String metricId) {
+        this.metricId = metricId;
     }
 }

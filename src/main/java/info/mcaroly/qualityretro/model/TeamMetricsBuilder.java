@@ -10,17 +10,23 @@ import java.util.List;
 
 public class TeamMetricsBuilder {
 
+    private String teamId;
     private String teamName;
     private String logo;
     private List<SpotifyMetric> metrics;
 
-    public static TeamMetricsBuilder metricsForTeam(String teamName) {
-        return new TeamMetricsBuilder(teamName);
+    public static TeamMetricsBuilder metricsForTeam(String teamId) {
+        return new TeamMetricsBuilder(teamId);
     }
 
-    private TeamMetricsBuilder(String teamName) {
-        this.teamName = teamName;
+    private TeamMetricsBuilder(String teamId) {
+        this.teamId = teamId;
         this.metrics = new ArrayList<>();
+    }
+
+    public TeamMetricsBuilder withTeamName(String name) {
+        this.teamName = name;
+        return this;
     }
 
     public TeamMetricsBuilder withLogoUrl(String url) {
@@ -34,7 +40,7 @@ public class TeamMetricsBuilder {
     }
 
     public TeamMetrics build() {
-        return new TeamMetrics(teamName, logo, metrics);
+        return new TeamMetrics(teamId, teamName, logo, metrics);
     }
 
 }

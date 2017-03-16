@@ -25,13 +25,14 @@ public class WebVerticle extends AbstractVerticle {
         staticHandler.setDirectoryListing(true);
         staticHandler.setIndexPage("index.html");
 
-        router.get("/metrics/team")
+        router.get("/metrics/:teamId")
                 .produces("application/json")
                 .handler(ctx -> {
+                    String teamId = ctx.request().getParam("teamId");
                     ctx.response()
                             .putHeader("content-type", "application/json")
                             .setChunked(true)
-                            .write(json(metricsService.getMetricsForTeam()))
+                            .write(json(metricsService.getMetricsForTeam(teamId)))
                             .end();
                 });
 

@@ -9,14 +9,20 @@ import java.util.List;
 
 public class TeamMetrics {
 
+    private final String teamId;
     private String teamName;
     private String teamLogo;
     private List<SpotifyMetric> metrics;
 
-    public TeamMetrics(String teamName, String teamLogo, List<SpotifyMetric> metrics) {
+    public TeamMetrics(String teamId, String teamName, String teamLogo, List<SpotifyMetric> metrics) {
+        this.teamId = teamId;
         this.teamName = teamName;
         this.teamLogo = teamLogo;
         this.metrics = metrics;
+    }
+
+    public String getTeamId() {
+        return teamId;
     }
 
     public String getTeamName() {

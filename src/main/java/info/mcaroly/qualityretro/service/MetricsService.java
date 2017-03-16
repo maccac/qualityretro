@@ -11,8 +11,9 @@ import static info.mcaroly.qualityretro.model.TeamMetricsBuilder.metricsForTeam;
 import info.mcaroly.qualityretro.model.TeamMetrics;
 
 public class MetricsService {
-    public TeamMetrics getMetricsForTeam() {
-        return metricsForTeam("Fluffy Bunnies")
+    public TeamMetrics getMetricsForTeam(String teamId) {
+        return metricsForTeam(teamId)
+                .withTeamName("Fluffy Bunnies")
                 .withLogoUrl("http://mylogo/logo.gif")
                 .withMetric(spotifyMetric("Delivering Value"))
                 .withMetric(spotifyMetric("Easy to release"))
@@ -27,6 +28,5 @@ public class MetricsService {
                 .withMetric(spotifyMetric("Teamwork"))
                 .withMetric(spotifyMetric("Visibility"))
                 .build();
-
     }
 }
