@@ -2,6 +2,7 @@
   "teamId": "fluffy-bunnies",
   "teamName": "Fluffy Bunnies",
   "teamLogo": "http://mylogo/logo.gif",
+  "date": "2017-07-01",
   "metrics": [
     {
       "metricId": "delivering-value",

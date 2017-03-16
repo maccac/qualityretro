@@ -14,6 +14,7 @@ public class TeamMetricsBuilder {
     private String teamName;
     private String logo;
     private List<SpotifyMetric> metrics;
+    private String date;
 
     public static TeamMetricsBuilder metricsForTeam(String teamId) {
         return new TeamMetricsBuilder(teamId);
@@ -40,7 +41,7 @@ public class TeamMetricsBuilder {
     }
 
     public TeamMetrics build() {
-        return new TeamMetrics(teamId, teamName, logo, metrics);
+        return new TeamMetrics(teamId, teamName, logo, date, metrics);
     }
 
 }

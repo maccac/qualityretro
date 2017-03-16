@@ -12,12 +12,13 @@ public class TeamMetrics {
     private String teamId;
     private String teamName;
     private String teamLogo;
+    private String date;
     private List<SpotifyMetric> metrics;
 
     public TeamMetrics() {
     }
 
-    public TeamMetrics(String teamId, String teamName, String teamLogo, List<SpotifyMetric> metrics) {
+    public TeamMetrics(String teamId, String teamName, String teamLogo, String date, List<SpotifyMetric> metrics) {
         this.teamId = teamId;
         this.teamName = teamName;
         this.teamLogo = teamLogo;
@@ -38,5 +39,9 @@ public class TeamMetrics {
 
     public List<SpotifyMetric> getMetrics() {
         return metrics;
+    }
+
+    public String getDate() {
+        return date;
     }
 }

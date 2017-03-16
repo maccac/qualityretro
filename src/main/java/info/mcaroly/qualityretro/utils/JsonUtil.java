@@ -8,9 +8,9 @@ package info.mcaroly.qualityretro.utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class JsonUtil {
+import io.vertx.core.json.JsonObject;
 
-    private static ObjectMapper objectMapper = new ObjectMapper();
+public class JsonUtil {
 
     public static String json(Object instance) {
         try {
@@ -18,5 +18,9 @@ public class JsonUtil {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static JsonObject jsonObject(Object instance) {
+        return JsonObject.mapFrom(instance);
     }
 }
