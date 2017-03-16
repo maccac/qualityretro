@@ -27,6 +27,9 @@ public class WebVerticle extends AbstractVerticle {
                 .produces("application/json")
                 .handler(teamMetricsHandler.handleTeamMetricsRequest("previous", vertx));
 
+        router.route("/")
+                .handler(ctx -> ctx.reroute("index.html"));
+
         router.route("/*")
                 .handler(staticHandler);
 
