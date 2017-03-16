@@ -1,9 +1,12 @@
 angular.module("quality-retro").service("MetricsService", function ($resource) {
     var vm = this;
 
-    vm.resource = $resource("/metrics/fluffy-bunnies/:version", {});
+    vm.resource = $resource("/metrics/:teamId/:version", {});
 
-    vm.getMetrics = function (version) {
-        return vm.resource.get({version: version});
+    vm.getMetrics = function (teamId, version) {
+        return vm.resource.get({
+            teamId: teamId,
+            version: version
+        });
     }
 });

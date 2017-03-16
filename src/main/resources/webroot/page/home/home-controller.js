@@ -1,8 +1,8 @@
-angular.module("quality-retro").controller("homeCtrl", function ($scope, $rootScope, MetricsService) {
+angular.module("quality-retro").controller("homeCtrl", function ($scope, $rootScope, $routeParams, MetricsService) {
     var vm = this;
     $scope.vm = vm;
 
-    MetricsService.getMetrics("latest").$promise
+    MetricsService.getMetrics($routeParams.teamId, "latest").$promise
         .then(function (data) {
             $rootScope.team = {
                 teamName: data.teamName,
