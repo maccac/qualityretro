@@ -1,22 +1,18 @@
 package info.mcaroly.qualityretro;
 
-import static info.mcaroly.qualityretro.utils.JsonUtil.json;
-
 import info.mcaroly.qualityretro.service.MetricsService;
+import io.netty.handler.codec.http.HttpResponseStatus;
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.AsyncResult;
 import io.vertx.core.Future;
+import io.vertx.core.eventbus.Message;
+import io.vertx.core.eventbus.ReplyException;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.StaticHandler;
 
 public class WebVerticle extends AbstractVerticle {
 
     private static final int PORT = 10080;
-
-    private MetricsService metricsService;
-
-    public WebVerticle() {
-        this.metricsService = new MetricsService();
-    }
 
     @Override
     public void start(Future<Void> fut) throws Exception {
@@ -29,11 +25,23 @@ public class WebVerticle extends AbstractVerticle {
                 .produces("application/json")
                 .handler(ctx -> {
                     String teamId = ctx.request().getParam("teamId");
-                    ctx.response()
-                            .putHeader("content-type", "application/json")
-                            .setChunked(true)
-                            .write(json(metricsService.getMetricsForTeam(teamId)))
-                            .end();
+                    vertx.eventBus().<String>send("team-metrics", teamId, result -> {
+                        if (result.succeeded()) {
+                            ctx.response()
+                                    .putHeader("content-type", "application/json")
+                                    .setChunked(true)
+                                    .write(result.result().body())
+                                    .setStatusCode(HttpResponseStatus.OK.code())
+                                    .end();
+                        } else {
+                            ctx.response()
+                                    .putHeader("content-type", "application/json")
+                                    .setChunked(true)
+                                    .setStatusCode(HttpResponseStatus.BAD_REQUEST.code())
+                                    .write(getErrorMessage(result))
+                                    .end();
+                        }
+                    });
                 });
 
         router.route("/*")
@@ -42,5 +50,15 @@ public class WebVerticle extends AbstractVerticle {
         vertx.createHttpServer()
                 .requestHandler(router::accept)
                 .listen(PORT);
+    }
+
+    private String getErrorMessage(AsyncResult<Message<String>> result) {
+        ReplyException replyException = (ReplyException) result.cause();
+        switch(replyException.failureCode()) {
+            case TeamMetricsVerticle.IO_ERROR : return "Failed to load metrics for team";
+            case TeamMetricsVerticle.JSON_ERROR: return "Invalid content in file";
+            default:
+                return replyException.getMessage();
+        }
     }
 }

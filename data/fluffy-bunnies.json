@@ -1,0 +1,127 @@
+{
+  "teamId": "fluffy-bunnies",
+  "teamName": "Fluffy Bunnies",
+  "teamLogo": "http://mylogo/logo.gif",
+  "metrics": [
+    {
+      "metricId": "delivering-value",
+      "title": "Delivering Value",
+      "image": null,
+      "type": "health-check",
+      "redIndicators": 4,
+      "yellowIndicators": 6,
+      "greenIndicators": 1,
+      "trend": "Flat"
+    },
+    {
+      "metricId": "easy-to-release",
+      "title": "Easy to release",
+      "image": null,
+      "type": "health-check",
+      "redIndicators": 6,
+      "yellowIndicators": 4,
+      "greenIndicators": 2,
+      "trend": "SlightDrop"
+    },
+    {
+      "metricId": "fun",
+      "title": "Fun",
+      "image": null,
+      "type": "health-check",
+      "redIndicators": 0,
+      "yellowIndicators": 6,
+      "greenIndicators": 9,
+      "trend": "SlightDrop"
+    },
+    {
+      "metricId": "health-of-codebase",
+      "title": "Health of codebase",
+      "image": null,
+      "type": "health-check",
+      "redIndicators": 5,
+      "yellowIndicators": 7,
+      "greenIndicators": 3,
+      "trend": "Dropping"
+    },
+    {
+      "metricId": "learning",
+      "title": "Learning",
+      "image": null,
+      "type": "health-check",
+      "redIndicators": 9,
+      "yellowIndicators": 5,
+      "greenIndicators": 8,
+      "trend": "SlightRise"
+    },
+    {
+      "metricId": "mission",
+      "title": "Mission",
+      "image": null,
+      "type": "health-check",
+      "redIndicators": 6,
+      "yellowIndicators": 4,
+      "greenIndicators": 2,
+      "trend": "MajorDrop"
+    },
+    {
+      "metricId": "empowerment",
+      "title": "Empowerment",
+      "image": null,
+      "type": "health-check",
+      "redIndicators": 7,
+      "yellowIndicators": 6,
+      "greenIndicators": 8,
+      "trend": "Dropping"
+    },
+    {
+      "metricId": "speed",
+      "title": "Speed",
+      "image": null,
+      "type": "health-check",
+      "redIndicators": 6,
+      "yellowIndicators": 8,
+      "greenIndicators": 0,
+      "trend": "SlightRise"
+    },
+    {
+      "metricId": "suitable-process",
+      "title": "Suitable Process",
+      "image": null,
+      "type": "health-check",
+      "redIndicators": 6,
+      "yellowIndicators": 6,
+      "greenIndicators": 0,
+      "trend": "SlightRise"
+    },
+    {
+      "metricId": "support",
+      "title": "Support",
+      "image": null,
+      "type": "health-check",
+      "redIndicators": 4,
+      "yellowIndicators": 7,
+      "greenIndicators": 7,
+      "trend": "Rising"
+    },
+    {
+      "metricId": "teamwork",
+      "title": "Teamwork",
+      "image": null,
+      "type": "health-check",
+      "redIndicators": 7,
+      "yellowIndicators": 8,
+      "greenIndicators": 0,
+      "trend": "MajorRise"
+    },
+    {
+      "metricId": "visibility",
+      "title": "Visibility",
+      "image": null,
+      "type": "health-check",
+      "redIndicators": 5,
+      "yellowIndicators": 7,
+      "greenIndicators": 3,
+      "trend": "Flat"
+    }
+  ]
+}

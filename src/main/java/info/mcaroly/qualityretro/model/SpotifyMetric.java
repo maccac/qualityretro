@@ -16,6 +16,9 @@ public class SpotifyMetric {
     private int greenIndicators;
     private Trend trend;
 
+    public SpotifyMetric() {
+    }
+
     public SpotifyMetric(String title, String image, int redIndicators, int yellowIndicators, int greenIndicators, Trend trend) {
         this.metricId = title.replace(" ", "-").toLowerCase();
         this.title = title;

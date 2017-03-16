@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <properties>
-        <vertx.verticle>info.mcaroly.qualityretro.WebVerticle</vertx.verticle>
+        <vertx.verticle>info.mcaroly.qualityretro.MainVerticle</vertx.verticle>
         <project.finalName>${project.artifactId}-${project.version}-fat.jar</project.finalName>
     </properties>
     <build>
