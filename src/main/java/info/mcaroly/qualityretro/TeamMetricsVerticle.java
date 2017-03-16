@@ -5,10 +5,8 @@
  */
 package info.mcaroly.qualityretro;
 
-import static info.mcaroly.qualityretro.utils.JsonUtil.json;
-
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 import info.mcaroly.qualityretro.message.GetTeamMetricsMessage;
 import info.mcaroly.qualityretro.model.TeamMetrics;
@@ -17,7 +15,6 @@ import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.eventbus.Message;
-import io.vertx.core.file.FileProps;
 import io.vertx.core.file.FileSystem;
 import io.vertx.core.json.JsonObject;
 
@@ -27,59 +24,68 @@ public class TeamMetricsVerticle extends AbstractVerticle {
     public static final int JSON_ERROR = 2;
     public static final int NOT_FOUND = 3;
 
-    public Handler<Message<JsonObject>> teamMetricsHandler() {
-        FileSystem fs = vertx.fileSystem();
+    @Override
+    public void start() throws Exception {
+        super.start();
+        vertx.eventBus().<JsonObject>consumer("team-metrics").handler(teamMetricsHandler());
+    }
+
+    private Handler<Message<JsonObject>> teamMetricsHandler() {
         return msg -> {
-            GetTeamMetricsMessage message = msg.body().mapTo(GetTeamMetricsMessage.class);
-
-            List<String> data = fs.readDirBlocking("data", message.getTeamId() + "{1}.*");
-            data.sort(String::compareTo);
-
-            data.forEach(System.out::println);
-            if (data.isEmpty()) {
+            FileSystem fs = vertx.fileSystem();
+            GetTeamMetricsMessage message = convertToMsg(msg);
+            List<String> data = getTeamMetricHistoryAsc(fs, message.getTeamId());
+            Optional<Integer> index = getIndexToSelectForVersion(data, message.getVersion());
+            if (!index.isPresent()) {
                 msg.fail(NOT_FOUND, "Not found");
                 return;
             }
 
-
-            String fileToRead;
-            if ("latest".equals(message.getVersion())) {
-                fileToRead = data.get(data.size() - 1);
-            } else if (data.size() > 1){
-                fileToRead = data.get(data.size() - 2);
-            } else {
-                msg.fail(NOT_FOUND, "Not found");
-                return;
-            }
-
-            System.out.println(fileToRead);
-
+            String fileToRead = data.get(index.get());
             fs.readFile(fileToRead, result -> {
                 if (result.succeeded()) {
-                    try {
-                        String json = json(parseAsTeamMetrics(result));
-                        System.out.println(json);
-                        msg.reply(json);
-                    } catch (IllegalArgumentException e) {
-                        e.printStackTrace();
-                        msg.fail(JSON_ERROR, e.toString());
-                    }
+                    fileSucceededToLoad(msg, result);
                 } else {
-                    String cause = result.cause().toString();
-                    System.out.println(cause);
-                    msg.fail(IO_ERROR, cause);
+                    fileFailedToLoad(msg, result);
                 }
             });
         };
     }
 
-    private TeamMetrics parseAsTeamMetrics(AsyncResult<Buffer> result) {
-        return result.result().toJsonObject().mapTo(TeamMetrics.class);
+    private void fileFailedToLoad(Message<JsonObject> msg, AsyncResult<Buffer> result) {
+        String cause = result.cause().toString();
+        msg.fail(IO_ERROR, cause);
     }
 
-    @Override
-    public void start() throws Exception {
-        super.start();
-        vertx.eventBus().<JsonObject>consumer("team-metrics").handler(teamMetricsHandler());
+    private void fileSucceededToLoad(Message<JsonObject> msg, AsyncResult<Buffer> result) {
+        try {
+            parseAsTeamMetrics(result.result());
+            msg.reply(result.result().toString());
+        } catch (IllegalArgumentException e) {
+            msg.fail(JSON_ERROR, e.toString());
+        }
+    }
+
+    private Optional<Integer> getIndexToSelectForVersion(List<String> data, String version) {
+         if ("latest".equals(version) && data.size() >= 1) {
+            return Optional.of(data.size() - 1);
+        } else if (data.size() > 1) {
+            return Optional.of(data.size() - 2);
+        }
+        return Optional.empty();
+    }
+
+    private GetTeamMetricsMessage convertToMsg(Message<JsonObject> msg) {
+        return msg.body().mapTo(GetTeamMetricsMessage.class);
+    }
+
+    private List<String> getTeamMetricHistoryAsc(FileSystem fs, String teamId) {
+        List<String> data = fs.readDirBlocking("data", teamId + "{1}.*");
+        data.sort(String::compareTo);
+        return data;
+    }
+
+    private TeamMetrics parseAsTeamMetrics(Buffer result) {
+        return result.toJsonObject().mapTo(TeamMetrics.class);
     }
 }
