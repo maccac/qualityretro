@@ -1,6 +1,5 @@
 package info.mcaroly.qualityretro;
 
-import info.mcaroly.qualityretro.service.MetricsService;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.AsyncResult;
