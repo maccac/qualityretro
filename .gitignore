@@ -13,3 +13,6 @@ src/main/resources/webroot/bower_components
 
 #.idea
 /.idea
+
+#target directory
+target/
