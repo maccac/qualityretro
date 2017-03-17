@@ -21,9 +21,7 @@ gulp.task("default", ["vendor:inject"], function () {
     var sourceJs = gulp.src(["!src/main/resources/webroot/bower_components/**/*.js", "src/main/resources/webroot/**/*.js"])
             .pipe(hash({
                 template: '<%= name %><%= ext %>?v=<%= hash %>'
-            }))
-        // .pipe(gulp.dest("src/main/resources/webroot/dest"))
-        ;
+            }));
 
     return gulp.src("src/main/resources/webroot/index.html")
         .pipe(inject(sourceJs, {
