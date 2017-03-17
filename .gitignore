@@ -10,3 +10,6 @@ src/main/resources/webroot/bower_components
 
 # vertx temp stuff
 /.vertx
+
+#.idea
+/.idea
