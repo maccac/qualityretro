@@ -9,9 +9,9 @@
       "title": "Delivering Value",
       "image": "/images/delivering-value.png",
       "type": "health-check",
-      "redIndicators": 4,
-      "yellowIndicators": 6,
-      "greenIndicators": 1,
+      "redIndicators": 0,
+      "yellowIndicators": 1,
+      "greenIndicators": 7,
       "trend": "Flat"
     },
     {
@@ -19,9 +19,9 @@
       "title": "Easy to release",
       "image": null,
       "type": "health-check",
-      "redIndicators": 6,
+      "redIndicators": 0,
       "yellowIndicators": 4,
-      "greenIndicators": 2,
+      "greenIndicators": 4,
       "trend": "SlightDrop"
     },
     {
@@ -30,8 +30,8 @@
       "image": null,
       "type": "health-check",
       "redIndicators": 0,
-      "yellowIndicators": 6,
-      "greenIndicators": 9,
+      "yellowIndicators": 1,
+      "greenIndicators": 7,
       "trend": "SlightDrop"
     },
     {
@@ -39,9 +39,9 @@
       "title": "Health of codebase",
       "image": null,
       "type": "health-check",
-      "redIndicators": 5,
-      "yellowIndicators": 7,
-      "greenIndicators": 3,
+      "redIndicators": 1,
+      "yellowIndicators": 3,
+      "greenIndicators": 4,
       "trend": "Dropping"
     },
     {
@@ -49,9 +49,9 @@
       "title": "Learning",
       "image": null,
       "type": "health-check",
-      "redIndicators": 9,
-      "yellowIndicators": 5,
-      "greenIndicators": 8,
+      "redIndicators": 0,
+      "yellowIndicators": 2,
+      "greenIndicators": 6,
       "trend": "SlightRise"
     },
     {
@@ -59,9 +59,9 @@
       "title": "Mission",
       "image": null,
       "type": "health-check",
-      "redIndicators": 6,
-      "yellowIndicators": 4,
-      "greenIndicators": 2,
+      "redIndicators": 0,
+      "yellowIndicators": 3,
+      "greenIndicators": 5,
       "trend": "MajorDrop"
     },
     {
@@ -69,19 +69,19 @@
       "title": "Empowerment",
       "image": null,
       "type": "health-check",
-      "redIndicators": 7,
-      "yellowIndicators": 6,
+      "redIndicators": 0,
+      "yellowIndicators": 0,
       "greenIndicators": 8,
-      "trend": "Dropping"
+      "trend": "Flat"
     },
     {
       "metricId": "speed",
       "title": "Speed",
       "image": null,
       "type": "health-check",
-      "redIndicators": 6,
-      "yellowIndicators": 8,
-      "greenIndicators": 0,
+      "redIndicators": 1,
+      "yellowIndicators": 1,
+      "greenIndicators": 6,
       "trend": "SlightRise"
     },
     {
@@ -89,9 +89,9 @@
       "title": "Suitable Process",
       "image": null,
       "type": "health-check",
-      "redIndicators": 6,
-      "yellowIndicators": 6,
-      "greenIndicators": 0,
+      "redIndicators": 2,
+      "yellowIndicators": 1,
+      "greenIndicators": 5,
       "trend": "SlightRise"
     },
     {
@@ -99,9 +99,9 @@
       "title": "Support",
       "image": null,
       "type": "health-check",
-      "redIndicators": 4,
-      "yellowIndicators": 7,
-      "greenIndicators": 7,
+      "redIndicators": 0,
+      "yellowIndicators": 0,
+      "greenIndicators": 8,
       "trend": "Rising"
     },
     {
@@ -109,9 +109,9 @@
       "title": "Teamwork",
       "image": null,
       "type": "health-check",
-      "redIndicators": 7,
-      "yellowIndicators": 8,
-      "greenIndicators": 0,
+      "redIndicators": 2,
+      "yellowIndicators": 2,
+      "greenIndicators": 4,
       "trend": "MajorRise"
     },
     {
@@ -119,9 +119,9 @@
       "title": "Visibility",
       "image": null,
       "type": "health-check",
-      "redIndicators": 5,
-      "yellowIndicators": 7,
-      "greenIndicators": 3,
+      "redIndicators": 0,
+      "yellowIndicators": 3,
+      "greenIndicators": 5,
       "trend": "Flat"
     }
   ]

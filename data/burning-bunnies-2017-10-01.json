@@ -87,10 +87,10 @@
     {
       "metricId": "suitable-process",
       "title": "Suitable Process",
-      "image": "/images/delivering-value.png",
+      "image": null,
       "type": "health-check",
       "redIndicators": 6,
-      "yellowIndicators": 6,
+      "yellowIndicators": 2,
       "greenIndicators": 0,
       "trend": "SlightRise"
     },
@@ -100,8 +100,8 @@
       "image": null,
       "type": "health-check",
       "redIndicators": 4,
-      "yellowIndicators": 7,
-      "greenIndicators": 7,
+      "yellowIndicators": 4,
+      "greenIndicators": 0,
       "trend": "Rising"
     },
     {
@@ -110,8 +110,8 @@
       "image": null,
       "type": "health-check",
       "redIndicators": 7,
-      "yellowIndicators": 8,
-      "greenIndicators": 0,
+      "yellowIndicators": 0,
+      "greenIndicators": 1,
       "trend": "MajorRise"
     },
     {
@@ -119,9 +119,9 @@
       "title": "Visibility",
       "image": null,
       "type": "health-check",
-      "redIndicators": 5,
-      "yellowIndicators": 7,
-      "greenIndicators": 3,
+      "redIndicators": 3,
+      "yellowIndicators": 2,
+      "greenIndicators": 2,
       "trend": "Flat"
     }
   ]
