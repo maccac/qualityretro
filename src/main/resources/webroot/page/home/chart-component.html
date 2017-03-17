@@ -1,5 +1,6 @@
 <div class="panel panel-info">
-    <image src="/images/delivering-value.png" height="48px" style="float: right; padding:5px"/>
+    <image ng-if="vm.metric.image" src="{{vm.metric.image}}" height="48px" style="float: right; padding:5px"/>
+    <image ng-if="!vm.metric.image" src="/images/{{vm.metric.metricId}}.png" height="48px" style="float: right; padding:5px"/>
     <div class="page-header">
         <h3>{{vm.metric.title}}
         </h3>
