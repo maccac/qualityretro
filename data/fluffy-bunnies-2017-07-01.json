@@ -7,7 +7,7 @@
     {
       "metricId": "delivering-value",
       "title": "Delivering Value",
-      "image": null,
+      "image": "/images/delivering-value.png",
       "type": "health-check",
       "redIndicators": 4,
       "yellowIndicators": 6,

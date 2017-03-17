@@ -87,7 +87,7 @@
     {
       "metricId": "suitable-process",
       "title": "Suitable Process",
-      "image": null,
+      "image": "/images/delivering-value.png",
       "type": "health-check",
       "redIndicators": 6,
       "yellowIndicators": 6,
