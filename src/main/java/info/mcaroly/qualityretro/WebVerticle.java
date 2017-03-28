@@ -12,7 +12,7 @@ public class WebVerticle extends AbstractVerticle {
 
     private static final Logger LOG = LoggerFactory.getLogger(WebVerticle.class);
 
-    public static final int DEFAULT_PORT = 10080;
+    private static final int DEFAULT_PORT = 10080;
 
     @Override
     public void start(Future<Void> fut) throws Exception {
